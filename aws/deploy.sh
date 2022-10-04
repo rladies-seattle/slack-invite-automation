@@ -30,6 +30,9 @@ aws cloudformation package \
 	--s3-bucket "${S3BucketArtifacts}" \
 	--s3-prefix "${S3PrefixArtifacts}"
 
+# Change nodejs version
+sed -i.bak 's/nodejs8.10/nodejs16.x/g' sam-output.yml
+
 # Deploy CloudFormation stack
 aws cloudformation deploy \
 	--template-file sam-output.yml \
@@ -45,7 +48,8 @@ aws cloudformation deploy \
 	RecaptchaSecretKey="${RecaptchaSecretKey}" \
 	Locale="${Locale}"
 
-Url=$(aws cloudformation describe-stacks --stack-name ${StackName} | grep OutputValue | cut -f 4 -d'"')
+Url=$(aws cloudformation describe-stacks --stack-name ${StackName} | grep OUTPUTS | cut -f 3)
+
 
 echo
 echo 'Deployed Slack Inviter!'
