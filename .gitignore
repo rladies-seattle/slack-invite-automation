@@ -41,3 +41,4 @@ aws/sam-output.yml
 #MAC
 *.DS_Store
 aws/sam-output.yml.bak
+.Rhistory
