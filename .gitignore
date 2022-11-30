@@ -32,7 +32,13 @@ node_modules
 .idea/
 .envrc
 
+# AWS build
 aws/config.sh
 aws/build/
 aws/api-swagger.json
 aws/sam-output.yml
+
+#MAC
+*.DS_Store
+aws/sam-output.yml.bak
+.Rhistory
